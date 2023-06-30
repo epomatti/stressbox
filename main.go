@@ -12,7 +12,7 @@ import (
 func main() {
 	fmt.Println("Starting server...")
 
-	port := flag.Int("port", 80, "The port on which to register the HTTP listener to.")
+	port := flag.Int("port", 8080, "The port on which to register the HTTP listener to.")
 	flag.Parse()
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -26,9 +26,9 @@ func main() {
 		fmt.Fprint(w, value)
 	})
 
-	http.HandleFunc("/fib", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/cpu", func(w http.ResponseWriter, r *http.Request) {
 		// Size
-		size := r.URL.Query().Get("size")
+		size := r.URL.Query().Get("x")
 		i, err := strconv.Atoi(size)
 		if err != nil {
 			w.WriteHeader(http.StatusBadRequest)
@@ -40,6 +40,7 @@ func main() {
 		if len(printStr) == 0 {
 			printStr = "FALSE"
 		}
+
 		b, errPrint := strconv.ParseBool(printStr)
 		if errPrint != nil {
 			w.WriteHeader(http.StatusBadRequest)
