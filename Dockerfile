@@ -7,7 +7,7 @@ RUN go build .
 
 FROM golang:alpine
 
-# curl added only for health check
+# curl added only for health check if anyone needs it
 RUN apk update && apk add curl
 WORKDIR /app
 COPY --from=builder /build/main .
