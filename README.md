@@ -22,6 +22,6 @@ Call the `/cpu` endpoint to simulate high CPU usage.
 
 The `x` parameter is a simple Fibonacci length. Adjust to your requirements.
 
-```sh
+```
 curl localhost:8080/cpu?x=30
 ```
