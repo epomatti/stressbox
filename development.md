@@ -9,12 +9,19 @@ go run main.go
 Building and running the image locally:
 
 ```sh
-docker build -t epomatti/stressbox .
-docker run -p 8080:8080 --rm epomatti/stressbox
+docker build -t stressbox .
+docker run -p 8080:8080 --rm stressbox
 ```
 
-Testing
+Testing locally:
 
 ```
-curl localhost:8080/cpu?x=42
+curl localhost:8080/cpu?x=30
+```
+
+Push a tag to trigger a Docker build and publish:
+
+```
+git tag v0.0.1
+git push --tags
 ```
