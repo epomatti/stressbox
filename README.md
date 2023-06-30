@@ -45,3 +45,21 @@ Running the load testing:
 ```
 k6 run -e URL="https://yourserver/cpu?x=30" --vus 10 --duration 300s script.js
 ```
+
+### Private image repository
+
+If you prefer or required running in your private registry, simply tag and push the image to your repository.
+
+Example with AWS ECR:
+
+```sh
+region="us-east-2"
+account="000000000000"
+repository_url="$account.dkr.ecr.$region.amazonaws.com"
+image_url="$repository_url/your-image-name:latest"
+
+docker pull ghcr.io/epomatti/stressbox
+docker tag ghcr.io/epomatti/stressbox $image_url
+aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $repository_url
+docker push $image_url
+```
