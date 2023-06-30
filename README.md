@@ -21,3 +21,27 @@ Call the `/cpu` endpoint to simulate high CPU usage. The `x` parameter is a simp
 ```
 curl localhost:8080/cpu?x=30
 ```
+
+### Load Testing
+
+Choose your favorite load testing tool. Here's an example with K6:
+
+```js
+// script.js
+import http from 'k6/http';
+import { sleep } from 'k6';
+
+const URL = __ENV.URL
+console.log(`Calling ${URL}`);
+
+export default function () {
+  const res = http.get(URL);
+  sleep(0);
+}
+```
+
+Running the load testing:
+
+```
+k6 run -e URL="https://yourserver/cpu?x=30" --vus 10 --duration 300s script.js
+```
