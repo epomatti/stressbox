@@ -22,6 +22,6 @@ docker run -p 8080:8080 --rm stressbox
 Push a tag to trigger a Docker build and publish:
 
 ```
-git tag v0.0.1
+git tag v*.*.*
 git push --tags
 ```
