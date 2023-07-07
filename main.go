@@ -45,6 +45,18 @@ type Order struct {
 }
 
 func jsonFunc(w http.ResponseWriter, r *http.Request) {
+	countStr := r.URL.Query().Get("count")
+	count := 1
+	if len(countStr) > 0 {
+		countTmp, err := strconv.Atoi(countStr)
+		if err != nil {
+			w.WriteHeader(http.StatusBadRequest)
+			fmt.Fprint(w, "Count argument is an invalid number: "+countStr)
+			return
+		} else {
+			count = countTmp
+		}
+	}
 	order := &Order{
 		Id:           "001",
 		Description:  "A very special order",
@@ -53,7 +65,11 @@ func jsonFunc(w http.ResponseWriter, r *http.Request) {
 		Date:         time.Now(),
 		DeliveryDate: time.Now(),
 	}
-	data, _ := json.Marshal(order)
+	orders := []*Order{}
+	for i := 0; i < count; i++ {
+		orders = append(orders, order)
+	}
+	data, _ := json.Marshal(orders)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintln(w, string(data))
