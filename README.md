@@ -53,13 +53,8 @@ If you prefer or required running in your private registry, simply tag and push 
 Example with AWS ECR:
 
 ```sh
-region="us-east-2"
-account="000000000000"
-repository_url="$account.dkr.ecr.$region.amazonaws.com"
-image_url="$repository_url/your-image-name:latest"
-
 docker pull ghcr.io/epomatti/stressbox
-docker tag ghcr.io/epomatti/stressbox $image_url
-aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $repository_url
-docker push $image_url
+docker tag ghcr.io/epomatti/stressbox "$account.dkr.ecr.$region.amazonaws.com/stressbox:latest"
+aws ecr get-login-password --region $region | docker login --username AWS --password-stdin "$account.dkr.ecr.$region.amazonaws.com"
+docker push "$account.dkr.ecr.$region.amazonaws.com/stressbox:latest"
 ```
