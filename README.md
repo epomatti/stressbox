@@ -12,9 +12,9 @@ Utility endpoints:
 |----------|-----------|-------------|---------|
 | /        | -       | Returns a static "OK" | curl localhost:8080 |
 | /cpu     | x={number} | Calculates a Fibonacci sequence | curl localhost:8080/cpu?x=42 |
-| /env     | env={var} | Returns an environment variable value | curl localhost:8080/envs?env=DB_NAME |
-| /json    | count={n} | Checks a TCP connection | curl localhost:8080/json?count=10 |
-| /tcp     | tcp={addr} | Checks a TCP connection | curl localhost:8080/tcp?address=google.com:443 |
+| /env     | env={var} | Environment variable | curl localhost:8080/envs?env=DB_NAME |
+| /json    | count={n} | Returns a JSON batch | curl localhost:8080/json?count=10 |
+| /tcp     | tcp={addr} | TCP connection | curl localhost:8080/tcp?address=google.com:443 |
 
 
 ### Running the image
