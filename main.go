@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"net"
 	"net/http"
 	"os"
 	"strconv"
@@ -24,6 +25,7 @@ func main() {
 	http.HandleFunc("/", ok)
 	http.HandleFunc("/json", jsonFunc)
 	http.HandleFunc("/envs", env)
+	http.HandleFunc("/tcp", tcp)
 	http.HandleFunc("/cpu", cpu)
 
 	// Server
@@ -80,6 +82,25 @@ func env(w http.ResponseWriter, r *http.Request) {
 	value := os.Getenv(env)
 	log.Println(value)
 	fmt.Fprint(w, value)
+}
+
+func tcp(w http.ResponseWriter, r *http.Request) {
+	addr := r.URL.Query().Get("address")
+	tcpAddr, err := net.ResolveTCPAddr("tcp", addr)
+	if err != nil {
+		errMsg := "Resolution failed:" + err.Error()
+		log.Println(errMsg)
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprint(w, errMsg)
+		return
+	}
+	conn, err := net.DialTCP("tcp", nil, tcpAddr)
+	if err != nil {
+		println("Dial failed:", err.Error())
+		os.Exit(1)
+	}
+	defer conn.Close()
+	fmt.Fprint(w, "TCP connection: OK\n")
 }
 
 func cpu(w http.ResponseWriter, r *http.Request) {

@@ -6,6 +6,17 @@ Simulate CPU and memory autoscaling behavior by running this image on your cloud
 docker pull ghcr.io/epomatti/stressbox
 ```
 
+Utility endpoints:
+
+| Endpoint | Arguments | Functionality | Example |
+|----------|-----------|-------------|---------|
+| /        | -       | Returns a static "OK" | curl localhost:8080 |
+| /cpu     | x={number} | Calculates a Fibonacci sequence | curl localhost:8080/cpu?x=42 |
+| /env     | env={var} | Returns an environment variable value | curl localhost:8080/envs?env=DB_NAME |
+| /json    | count={n} | Checks a TCP connection | curl localhost:8080/json?count=10 |
+| /tcp     | tcp={addr} | Checks a TCP connection | curl localhost:8080/tcp?address=google.com:443 |
+
+
 ### Running the image
 
 Simply run it with the port binding:
