@@ -12,7 +12,7 @@ Utility endpoints:
 |----------|-----------|-------------|---------|
 | /        | -       | Returns a static "OK" | curl localhost:8080 |
 | /cpu     | x={number} | Fibonacci sequence | curl localhost:8080/cpu?x=42 |
-| /env     | env={var} | Environment variable | curl localhost:8080/envs?env=DB_NAME |
+| /envs    | env={var} | Environment variable | curl localhost:8080/envs?env=DB_NAME |
 | /json    | count={n} | Returns a JSON batch | curl localhost:8080/json?count=10 |
 | /tcp     | tcp={addr} | TCP connection | curl localhost:8080/tcp?address=google.com:443 |
 
