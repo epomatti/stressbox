@@ -90,14 +90,17 @@ func tcp(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		errMsg := "Resolution failed:" + err.Error()
 		log.Println(errMsg)
-		w.WriteHeader(http.StatusBadRequest)
+		w.WriteHeader(http.StatusBadGateway)
 		fmt.Fprint(w, errMsg)
 		return
 	}
 	conn, err := net.DialTCP("tcp", nil, tcpAddr)
 	if err != nil {
-		println("Dial failed:", err.Error())
-		os.Exit(1)
+		errMsg := "Dial failed:" + err.Error()
+		log.Println(errMsg)
+		w.WriteHeader(http.StatusBadGateway)
+		fmt.Fprint(w, errMsg)
+		return
 	}
 	defer conn.Close()
 	fmt.Fprint(w, "TCP connection: OK\n")
