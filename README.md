@@ -1,22 +1,21 @@
 # stressbox
 
-Simulate CPU and memory autoscaling behavior by running this image on your cloud infrastructure with your favorite load testing tool.
+Simulate stress/load behavior such as high CPU and memory by running this image on your infrastructure with your favorite load testing tool.
 
 ```sh
 docker pull ghcr.io/epomatti/stressbox
 ```
 
-Utility endpoints:
+AVailable endpoints:
 
 | Endpoint | Functionality | Example |
 |----------|-------------|---------|
-| /        | Returns a static "OK" | `curl 127.1:8080` |
 | /cpu?x={n} | Calculates a Fibonacci sequence | `curl 127.1:8080/cpu?x=42` |
 | /envs?env={var} | Returns an environment variable | `curl 127.1:8080/envs?env=DB_NAME` |
 | /tcp?addr={addr} | Tests a TCP connection | `curl 127.1:8080/tcp?addr=google.com:443` |
-| /json?count={n} | Returns a JSON batch | `curl 127.1:8080/json?count=10` |
+| /json?size={n} | Returns a JSON batch | `curl 127.1:8080/json?size=10000` |
 | /exit | Exits the application | `curl 127.1:8080/exit` |
-
+| /        | Returns a static "OK" | `curl 127.1:8080` |
 
 ## Running the image
 
