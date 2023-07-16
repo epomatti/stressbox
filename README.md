@@ -11,9 +11,9 @@ Utility endpoints:
 | Endpoint | Functionality | Example |
 |----------|-------------|---------|
 | /        | Returns a static "OK" | `curl 127.1:8080` |
-| /cpu?x={n} | Fibonacci sequence | `curl 127.1:8080/cpu?x=42` |
-| /envs?env={var} | Environment variable | `curl 127.1:8080/envs?env=DB_NAME` |
-| /tcp?addr={addr} | TCP connection | `curl 127.1:8080/tcp?addr=google.com:443` |
+| /cpu?x={n} | Calculates a Fibonacci sequence | `curl 127.1:8080/cpu?x=42` |
+| /envs?env={var} | Returns and environment variable | `curl 127.1:8080/envs?env=DB_NAME` |
+| /tcp?addr={addr} | Tests a TCP connection | `curl 127.1:8080/tcp?addr=google.com:443` |
 | /json?count={n} | Returns a JSON batch | `curl 127.1:8080/json?count=10` |
 | /exit | Exits the application | `curl 127.1:8080/exit` |
 
