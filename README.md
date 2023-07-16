@@ -8,13 +8,13 @@ docker pull ghcr.io/epomatti/stressbox
 
 Utility endpoints:
 
-| Endpoint | Arguments | Functionality | Example |
-|----------|-----------|-------------|---------|
-| /        | -       | Returns a static "OK" | curl localhost:8080 |
-| /cpu     | x={number} | Fibonacci sequence | curl localhost:8080/cpu?x=42 |
-| /envs    | env={var} | Environment variable | curl localhost:8080/envs?env=DB_NAME |
-| /json    | count={n} | Returns a JSON batch | curl localhost:8080/json?count=10 |
-| /tcp     | tcp={addr} | TCP connection | curl localhost:8080/tcp?address=google.com:443 |
+| Endpoint | Functionality | Example |
+|----------|-------------|---------|
+| /        | Returns a static "OK" | curl localhost:8080 |
+| /cpu?x={n} | Fibonacci sequence | curl localhost:8080/cpu?x=42 |
+| /envs?env={var} | Environment variable | curl localhost:8080/envs?env=DB_NAME |
+| /json?count={n} | Returns a JSON batch | curl localhost:8080/json?count=10 |
+| /tcp?address={addr} | TCP connection | curl localhost:8080/tcp?address=google.com:443 |
 
 
 ### Running the image
