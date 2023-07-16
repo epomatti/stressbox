@@ -2,10 +2,6 @@
 
 Simulate stress/load behavior such as high CPU and memory by running this image on your infrastructure with your favorite load testing tool.
 
-```sh
-docker pull ghcr.io/epomatti/stressbox
-```
-
 AVailable endpoints:
 
 | Endpoint | Functionality | Example |
@@ -19,7 +15,13 @@ AVailable endpoints:
 
 ## Running the image
 
-Simply run it with the port binding:
+Get the image:
+
+```sh
+docker pull ghcr.io/epomatti/stressbox
+```
+
+Run it with the port binding:
 
 ```sh
 docker run -p 8080:8080 ghcr.io/epomatti/stressbox
