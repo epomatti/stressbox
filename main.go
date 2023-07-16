@@ -27,6 +27,7 @@ func main() {
 	http.HandleFunc("/envs", env)
 	http.HandleFunc("/tcp", tcp)
 	http.HandleFunc("/cpu", cpu)
+	http.HandleFunc("/exit", exit)
 
 	// Server
 	addr := fmt.Sprintf(":%d", *port)
@@ -104,6 +105,11 @@ func tcp(w http.ResponseWriter, r *http.Request) {
 	}
 	defer conn.Close()
 	fmt.Fprint(w, "TCP connection: OK\n")
+}
+
+func exit(w http.ResponseWriter, r *http.Request) {
+	log.Println("Exiting the application")
+	os.Exit(3)
 }
 
 func cpu(w http.ResponseWriter, r *http.Request) {
