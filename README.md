@@ -10,11 +10,12 @@ Utility endpoints:
 
 | Endpoint | Functionality | Example |
 |----------|-------------|---------|
-| /        | Returns a static "OK" | `curl localhost:8080` |
-| /cpu?x={n} | Fibonacci sequence | `curl localhost:8080/cpu?x=42` |
-| /envs?env={var} | Environment variable | `curl localhost:8080/envs?env=DB_NAME` |
-| /json?count={n} | Returns a JSON batch | `curl localhost:8080/json?count=10` |
-| /tcp?address={addr} | TCP connection | `curl localhost:8080/tcp?address=google.com:443` |
+| /        | Returns a static "OK" | `curl 127.1:8080` |
+| /cpu?x={n} | Fibonacci sequence | `curl 127.1:8080/cpu?x=42` |
+| /envs?env={var} | Environment variable | `curl 127.1:8080/envs?env=DB_NAME` |
+| /tcp?address={addr} | TCP connection | `curl 127.1:8080/tcp?address=google.com:443` |
+| /json?count={n} | Returns a JSON batch | `curl 127.1:8080/json?count=10` |
+| /exit | Exits the application | `curl 127.1:8080/exit` |
 
 
 ## Running the image
