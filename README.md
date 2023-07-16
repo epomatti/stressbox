@@ -53,7 +53,7 @@ export default function () {
 
 Running the load testing:
 
-```
+```sh
 k6 run -e URL="https://yourserver/cpu?x=30" --vus 10 --duration 300s script.js
 ```
 
