@@ -86,7 +86,7 @@ func env(w http.ResponseWriter, r *http.Request) {
 }
 
 func tcp(w http.ResponseWriter, r *http.Request) {
-	addr := r.URL.Query().Get("address")
+	addr := r.URL.Query().Get("addr")
 	tcpAddr, err := net.ResolveTCPAddr("tcp", addr)
 	if err != nil {
 		errMsg := "Resolution failed:" + err.Error()
