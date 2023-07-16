@@ -2,7 +2,7 @@
 
 Simulate stress/load behavior such as high CPU and memory by running this image on your infrastructure with your favorite load testing tool.
 
-AVailable endpoints:
+Available endpoints:
 
 | Endpoint | Functionality | Example |
 |----------|-------------|---------|
