@@ -10,14 +10,14 @@ Utility endpoints:
 
 | Endpoint | Functionality | Example |
 |----------|-------------|---------|
-| /        | Returns a static "OK" | curl localhost:8080 |
-| /cpu?x={n} | Fibonacci sequence | curl localhost:8080/cpu?x=42 |
-| /envs?env={var} | Environment variable | curl localhost:8080/envs?env=DB_NAME |
-| /json?count={n} | Returns a JSON batch | curl localhost:8080/json?count=10 |
-| /tcp?address={addr} | TCP connection | curl localhost:8080/tcp?address=google.com:443 |
+| /        | Returns a static "OK" | `curl localhost:8080` |
+| /cpu?x={n} | Fibonacci sequence | `curl localhost:8080/cpu?x=42` |
+| /envs?env={var} | Environment variable | `curl localhost:8080/envs?env=DB_NAME` |
+| /json?count={n} | Returns a JSON batch | `curl localhost:8080/json?count=10` |
+| /tcp?address={addr} | TCP connection | `curl localhost:8080/tcp?address=google.com:443` |
 
 
-### Running the image
+## Running the image
 
 Simply run it with the port binding:
 
@@ -33,7 +33,7 @@ Call the `/cpu` endpoint to simulate high CPU usage. The `x` parameter is a simp
 curl localhost:8080/cpu?x=30
 ```
 
-### Load Testing
+## Load Testing
 
 Choose your favorite load testing tool. Here's an example with K6:
 
@@ -57,7 +57,7 @@ Running the load testing:
 k6 run -e URL="https://yourserver/cpu?x=30" --vus 10 --duration 300s script.js
 ```
 
-### Private image repository
+## Private image repository
 
 If you prefer or required running in your private registry, simply tag and push the image to your repository.
 
