@@ -28,6 +28,7 @@ func main() {
 	http.HandleFunc("/tcp", tcp)
 	http.HandleFunc("/cpu", cpu)
 	http.HandleFunc("/exit", exit)
+	http.HandleFunc("/log", logFunc)
 
 	// Server
 	addr := fmt.Sprintf(":%d", *port)
@@ -110,6 +111,11 @@ func tcp(w http.ResponseWriter, r *http.Request) {
 func exit(w http.ResponseWriter, r *http.Request) {
 	log.Println("Exiting the application")
 	os.Exit(3)
+}
+
+func logFunc(w http.ResponseWriter, r *http.Request) {
+	m := r.URL.Query().Get("m")
+	log.Println(m)
 }
 
 func cpu(w http.ResponseWriter, r *http.Request) {
