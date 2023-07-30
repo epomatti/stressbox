@@ -64,7 +64,7 @@ k6 run -e URL="https://yourserver/cpu?x=30" --vus 10 --duration 300s script.js
 
 ## Private image repository
 
-If you prefer or required running in your private registry, simply tag and push the image to your repository.
+Using this image in your private image repository is easy. Simply tag and push the image to your repository.
 
 Example with AWS ECR:
 
