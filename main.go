@@ -27,6 +27,7 @@ func main() {
 	http.HandleFunc("/envs", env)
 	http.HandleFunc("/tcp", tcp)
 	http.HandleFunc("/cpu", cpu)
+	http.HandleFunc("/mem", mem)
 	http.HandleFunc("/exit", exit)
 	http.HandleFunc("/log", logFunc)
 
@@ -77,6 +78,31 @@ func jsonFunc(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintln(w, string(data))
+}
+
+var mb []byte
+var s [][]byte
+
+func mem(w http.ResponseWriter, r *http.Request) {
+	addStr := r.URL.Query().Get("add")
+	add, err := strconv.Atoi(addStr)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("Invalid integer received: " + addStr))
+		return
+	}
+	if len(mb) == 0 {
+		tmp := make([]byte, 1048576)
+		for i := 0; i < len(tmp); i++ {
+			tmp[i] = 10
+		}
+		mb = tmp
+	}
+	for i := 0; i < add; i++ {
+		dst := make([]byte, len(mb))
+		copy(dst, mb)
+		s = append(s, dst)
+	}
 }
 
 func env(w http.ResponseWriter, r *http.Request) {
