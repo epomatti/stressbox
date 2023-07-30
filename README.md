@@ -7,8 +7,8 @@ Available endpoints:
 | Endpoint | Functionality | Example |
 |----------|-------------|---------|
 | /cpu?x={n} | Stresses the CPU by a factor of "x" | `curl 127.1:8080/cpu?x=42` |
-| /mem?add={mb} | Increases used memory in megabytes | `curl 127.1:8080/mem?add=100` |
-| /tcp?addr={addr} | Tests a TCP connection | `curl 127.1:8080/tcp?addr=google.com:443` |
+| /mem?add={mb} | Increases the used memory in megabytes | `curl 127.1:8080/mem?add=100` |
+| /tcp?addr={addr} | Tests a target TCP connection | `curl 127.1:8080/tcp?addr=google.com:443` |
 | /envs?env={var} | Returns an environment variable | `curl 127.1:8080/envs?env=DB_NAME` |
 | /json?size={n} | Returns a JSON batch | `curl 127.1:8080/json?size=10000` |
 | /exit | Exits the application | `curl 127.1:8080/exit` |
