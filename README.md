@@ -1,7 +1,5 @@
 # stressbox
 
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/epomatti/stressbox/docker-publish.yml)
-
 Simulate stress/load behavior such as high CPU and memory by running this image on your infrastructure with your favorite load testing tool.
 
 Available endpoints:
