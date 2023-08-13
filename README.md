@@ -38,7 +38,7 @@ Call the `/cpu` endpoint to simulate high CPU usage. The `x` parameter is a simp
 curl localhost:8080/cpu?x=30
 ```
 
-## Load Testing
+## Load testing
 
 Choose your favorite load testing tool. Here's an example with K6:
 
@@ -62,15 +62,24 @@ Running the load testing:
 k6 run -e URL="https://yourserver/cpu?x=30" --vus 10 --duration 300s script.js
 ```
 
-## Private image repository
+## Private repositories
 
-Using this image in your private image repository is easy. Simply tag and push the image to your repository.
+Command samples to upload this image to your docker repository:
 
-Example with AWS ECR:
+### AWS ECR
 
 ```sh
 docker pull ghcr.io/epomatti/stressbox
 docker tag ghcr.io/epomatti/stressbox "$account.dkr.ecr.$region.amazonaws.com/stressbox:latest"
 aws ecr get-login-password --region $region | docker login --username AWS --password-stdin "$account.dkr.ecr.$region.amazonaws.com"
 docker push "$account.dkr.ecr.$region.amazonaws.com/stressbox:latest"
+```
+
+### Azure Container Registry (ACR)
+
+```sh
+az acr login --name "$acr"
+docker pull ghcr.io/epomatti/stressbox
+docker tag ghcr.io/epomatti/stressbox "$acr.azurecr.io/$repository:latest"
+docker push "$acr.azurecr.io/$repository:latest"
 ```
