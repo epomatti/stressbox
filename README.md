@@ -66,7 +66,7 @@ k6 run -e URL="https://yourserver/cpu?x=30" --vus 10 --duration 300s script.js
 
 Command samples to upload this image to your docker repository:
 
-### AWS ECR
+### AWS Elastic Container Registry (ECR)
 
 ```sh
 docker pull ghcr.io/epomatti/stressbox
