@@ -29,7 +29,7 @@ Stressbox has a web interface. Deploy the image to your cluster and use the endp
 
 ## Getting started
 
-Run the image locally is an easy way to get to know the toolbox:
+Running the image locally is an easy way to get to know the toolbox:
 
 Pull the image:
 
