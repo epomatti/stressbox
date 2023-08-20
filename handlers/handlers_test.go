@@ -1,14 +1,15 @@
 package handlers
 
-// Credits: https://speedscale.com/blog/testing-golang-with-httptest/
-
 import (
 	"io"
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"runtime"
 	"testing"
 )
+
+// Credits: https://speedscale.com/blog/testing-golang-with-httptest/
 
 func TestOk(t *testing.T) {
 	expected := "OK"
@@ -77,5 +78,26 @@ func TestEnv(t *testing.T) {
 	strData := string(data)
 	if string(data) != expected {
 		t.Errorf("Expected [%v] but got [%v]", expected, strData)
+	}
+}
+
+func TestMem(t *testing.T) {
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+	alloc := m.Alloc / 1024 / 1024
+	expected := alloc + 100
+	req := httptest.NewRequest(http.MethodGet, "/mem?add=100", nil)
+	w := httptest.NewRecorder()
+	Mem(w, req)
+	res := w.Result()
+	defer res.Body.Close()
+	_, err := io.ReadAll(res.Body)
+	if err != nil {
+		t.Errorf("Error: %v", err)
+	}
+	runtime.ReadMemStats(&m)
+	allocNew := m.Alloc / 1024 / 1024
+	if allocNew <= expected {
+		t.Errorf("Expected [%v] but got [%v]", expected, allocNew)
 	}
 }
