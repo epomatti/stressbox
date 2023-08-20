@@ -14,7 +14,7 @@ Check the [Private repositories](#private-repositories) section for examples on 
 
 ## Endpoints
 
-Stressbox is a web application published as a container. Deploy it to your cluster and use the endpoints:
+Stressbox has a web interface. Deploy the image to your cluster and use the endpoints:
 
 | Endpoint | Functionality | Example |
 |----------|-------------|---------|
