@@ -3,11 +3,18 @@
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/epomatti/stressbox/go.yml)
 [![codecov](https://codecov.io/gh/epomatti/stressbox/graph/badge.svg?token=BR9Q424076)](https://codecov.io/gh/epomatti/stressbox) [![Go Report Card](https://goreportcard.com/badge/github.com/epomatti/stressbox)](https://goreportcard.com/report/github.com/epomatti/stressbox) [![codebeat badge](https://codebeat.co/badges/634c7208-edd0-4f05-8b87-a9627d9986db)](https://codebeat.co/projects/github-com-epomatti-stressbox-main)
 
-Simulate stress/load behavior such as high CPU and memory by running this image on your infrastructure with your favorite load testing tool, along with some extra utility functions.
+Stressbox is a small Docker utility for Cloud Engineers and SREs that conveniently assists on testing common scenarios involving containerized infrastructure.
+
+- **Load testing** - Simulate high CPU or memory usage to trigger autoscaling and alarms.
+- **Stress testing** - Force stress test scenarios to observe the cluster resiliency and reaction.
+- **Networking/firewall** - Test firewall rules and connectivity requirements within your infrastructure.
+- **Configuration** - Verify system configuration.
+
+Check the [Private repositories](#private-repositories) section for examples on how to deploy the image to your cluster.
 
 ## Endpoints
 
-Available endpoints:
+Stressbox is published as a web application container. Simply run the image in your cluster and call the utility endpoints.
 
 | Endpoint | Functionality | Example |
 |----------|-------------|---------|
@@ -19,7 +26,6 @@ Available endpoints:
 | /exit | Exits the application | `curl 127.1:8080/exit` |
 | /log?={m} | Writes to standard out | `curl 127.1:8080/log?m=Hello` |
 | / | Returns a static OK | `curl 127.1:8080/` |
-
 
 ## Running the image
 
