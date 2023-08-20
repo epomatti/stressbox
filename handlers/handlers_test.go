@@ -45,6 +45,22 @@ func TestCpu(t *testing.T) {
 	}
 }
 
+func TestCpuError(t *testing.T) {
+	expected := 400
+	req := httptest.NewRequest(http.MethodGet, "/cpu", nil)
+	w := httptest.NewRecorder()
+	Cpu(w, req)
+	res := w.Result()
+	defer res.Body.Close()
+	_, err := io.ReadAll(res.Body)
+	if err != nil {
+		t.Errorf("Error: %v", err)
+	}
+	if res.StatusCode != expected {
+		t.Errorf("Expected [%v] but got [%v]", expected, res.StatusCode)
+	}
+}
+
 func TestTcp(t *testing.T) {
 	expected := "TCP connection: OK\n"
 	req := httptest.NewRequest(http.MethodGet, "/tcp?addr=google.com:443", nil)

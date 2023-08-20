@@ -128,25 +128,10 @@ func Cpu(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("You need to inform the size. Value received: " + size))
 		return
 	}
-	// Print
-	printStr := r.URL.Query().Get("print")
-	if len(printStr) == 0 {
-		printStr = "FALSE"
-	}
-
-	b, errPrint := strconv.ParseBool(printStr)
-	if errPrint != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("You need to inform the print boolean. Value received: " + printStr))
-		return
-	}
 
 	// Calculate
 	ui := uint(i)
 	f := fib(ui)
-	if b {
-		fmt.Println(strconv.FormatUint(uint64(f), 10))
-	}
 	fmt.Fprint(w, f)
 }
 
