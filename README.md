@@ -29,19 +29,21 @@ Stressbox has a web interface. Deploy the image to your cluster and use the endp
 
 ## Getting started
 
-Get the image:
+Run the image locally is an easy way to get to know the toolbox:
+
+Pull the image:
 
 ```sh
 docker pull ghcr.io/epomatti/stressbox
 ```
 
-Run it with the port binding:
+Start the container:
+
+> 💡 Add `-e port=<PORT>` to start the listener in another port
 
 ```sh
 docker run -p 8080:8080 ghcr.io/epomatti/stressbox
 ```
-
-To change the default listener port, add `-e port=<PORT>` and set the publish parameter accordingly.
 
 Call the `/cpu` endpoint to simulate high CPU usage. The `x` parameter is a simple Fibonacci length. Adjust to your requirements.
 
