@@ -21,7 +21,7 @@ Stressbox has a web interface. Deploy the image to your cluster and use the endp
 | /mem?add={mb} | Increases the used memory in megabytes | `curl 127.1:8080/mem?add=100` |
 | /tcp?addr={addr} | Tests a target TCP connection | `curl 127.1:8080/tcp?addr=google.com:443` |
 | /envs?env={var} | Returns an environment variable | `curl 127.1:8080/envs?env=DB_NAME` |
-| /json?size={n} | Returns a JSON batch | `curl 127.1:8080/json?size=10000` |
+| /json?size={n} | Returns a JSON batch of size "n" | `curl 127.1:8080/json?size=10000` |
 | /exit | Exits the application | `curl 127.1:8080/exit` |
 | /log?={m} | Writes to standard out | `curl 127.1:8080/log?m=Hello` |
 | / | Returns a static OK | `curl 127.1:8080/` |
