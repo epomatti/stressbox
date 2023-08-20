@@ -101,3 +101,20 @@ func TestMem(t *testing.T) {
 		t.Errorf("Expected [%v] but got [%v]", expected, allocNew)
 	}
 }
+
+func TestJsonFunc(t *testing.T) {
+	expected := 200
+	req := httptest.NewRequest(http.MethodGet, "/json?size=1", nil)
+	w := httptest.NewRecorder()
+	JsonFunc(w, req)
+	res := w.Result()
+	defer res.Body.Close()
+	data, err := io.ReadAll(res.Body)
+	if err != nil {
+		t.Errorf("Error: %v", err)
+	}
+	strData := string(data)
+	if expected != res.StatusCode {
+		t.Errorf("Expected [%v] but got [%v]", expected, strData)
+	}
+}
