@@ -97,7 +97,7 @@ func TestTcpError1(t *testing.T) {
 
 func TestTcpError2(t *testing.T) {
 	expected := http.StatusBadGateway
-	req := httptest.NewRequest(http.MethodGet, "/tcp?addr=google.com:88888", nil)
+	req := httptest.NewRequest(http.MethodGet, "/tcp?addr=localhost:1", nil)
 	w := httptest.NewRecorder()
 	Tcp(w, req)
 	res := w.Result()
