@@ -6,7 +6,7 @@
 Stressbox is a small Docker utility for Cloud Engineers and SREs that conveniently assists on testing common scenarios involving containerized infrastructure.
 
 - **Load testing** - Simulate high CPU or memory usage to trigger autoscaling and alarms.
-- **Stress testing** - Force stress test scenarios to observe the cluster resiliency and reaction.
+- **Stress testing** - Force stress test scenarios and observe the cluster resiliency.
 - **Networking/firewall** - Test firewall rules and connectivity requirements within your infrastructure.
 - **Configuration** - Verify system configuration.
 
@@ -14,7 +14,7 @@ Check the [Private repositories](#private-repositories) section for examples on 
 
 ## Endpoints
 
-Stressbox is published as a web application container. Simply run the image in your cluster and call the utility endpoints.
+Stressbox is a web application published as a container. Deploy it to your cluster and use the endpoints:
 
 | Endpoint | Functionality | Example |
 |----------|-------------|---------|
@@ -27,7 +27,7 @@ Stressbox is published as a web application container. Simply run the image in y
 | /log?={m} | Writes to standard out | `curl 127.1:8080/log?m=Hello` |
 | / | Returns a static OK | `curl 127.1:8080/` |
 
-## Running the image
+## Getting started
 
 Get the image:
 
