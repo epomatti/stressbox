@@ -45,11 +45,13 @@ Start the container:
 docker run -p 8080:8080 ghcr.io/epomatti/stressbox
 ```
 
-Call the `/cpu` endpoint to simulate high CPU usage. The `x` parameter is a simple Fibonacci length. Adjust to your requirements.
+Call the `/cpu` endpoint to simulate high CPU usage:
 
 ```
 curl localhost:8080/cpu?x=30
 ```
+
+The `x` parameter is a simple Fibonacci length, adjust to your requirements.
 
 ## Load testing
 
