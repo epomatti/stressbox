@@ -78,6 +78,40 @@ func TestTcp(t *testing.T) {
 	}
 }
 
+func TestTcpError1(t *testing.T) {
+	expected := http.StatusBadGateway
+	req := httptest.NewRequest(http.MethodGet, "/tcp?addr=google.com:88888", nil)
+	w := httptest.NewRecorder()
+	Tcp(w, req)
+	res := w.Result()
+	defer res.Body.Close()
+	data, err := io.ReadAll(res.Body)
+	if err != nil {
+		t.Errorf("Error: %v", err)
+	}
+	strData := string(data)
+	if expected != res.StatusCode {
+		t.Errorf("Expected [%v] but got [%v]", expected, strData)
+	}
+}
+
+func TestTcpError2(t *testing.T) {
+	expected := http.StatusBadGateway
+	req := httptest.NewRequest(http.MethodGet, "/tcp?addr=google.com:88888", nil)
+	w := httptest.NewRecorder()
+	Tcp(w, req)
+	res := w.Result()
+	defer res.Body.Close()
+	data, err := io.ReadAll(res.Body)
+	if err != nil {
+		t.Errorf("Error: %v", err)
+	}
+	strData := string(data)
+	if expected != res.StatusCode {
+		t.Errorf("Expected [%v] but got [%v]", expected, strData)
+	}
+}
+
 func TestEnv(t *testing.T) {
 	expected := "UNIT TESTING"
 	os.Setenv("UNIT_TEST_ENV", expected)
