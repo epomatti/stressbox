@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"main/handlers"
+	"github.com/epomatti/stressbox/handlers"
 )
 
 func main() {
