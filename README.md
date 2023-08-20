@@ -1,7 +1,7 @@
 # stressbox
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/epomatti/stressbox/go.yml)
-[![codecov](https://codecov.io/gh/epomatti/stressbox/graph/badge.svg?token=BR9Q424076)](https://codecov.io/gh/epomatti/stressbox)
+[![codecov](https://codecov.io/gh/epomatti/stressbox/graph/badge.svg?token=BR9Q424076)](https://codecov.io/gh/epomatti/stressbox) [![Go Report Card](https://goreportcard.com/badge/github.com/epomatti/stressbox)](https://goreportcard.com/report/github.com/epomatti/stressbox)
 
 Simulate stress/load behavior such as high CPU and memory by running this image on your infrastructure with your favorite load testing tool.
 
