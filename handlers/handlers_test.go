@@ -1,13 +1,13 @@
 package handlers
 
+// Credits: https://speedscale.com/blog/testing-golang-with-httptest/
+
 import (
 	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 )
-
-// https://speedscale.com/blog/testing-golang-with-httptest/
 
 func TestOk(t *testing.T) {
 	expected := "OK"
