@@ -97,6 +97,23 @@ func TestEnv(t *testing.T) {
 	}
 }
 
+func TestEnvError(t *testing.T) {
+	expected := 400
+	req := httptest.NewRequest(http.MethodGet, "/envs", nil)
+	w := httptest.NewRecorder()
+	Env(w, req)
+	res := w.Result()
+	defer res.Body.Close()
+	data, err := io.ReadAll(res.Body)
+	if err != nil {
+		t.Errorf("Error: %v", err)
+	}
+	strData := string(data)
+	if expected != res.StatusCode {
+		t.Errorf("Expected [%v] but got [%v]", expected, strData)
+	}
+}
+
 func TestMem(t *testing.T) {
 	var m runtime.MemStats
 	runtime.ReadMemStats(&m)

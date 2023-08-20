@@ -82,8 +82,12 @@ func Mem(w http.ResponseWriter, r *http.Request) {
 
 func Env(w http.ResponseWriter, r *http.Request) {
 	env := r.URL.Query().Get("env")
+	if len(env) == 0 {
+		w.WriteHeader(http.StatusBadRequest)
+		fmt.Fprint(w, "env argument is required")
+		return
+	}
 	value := os.Getenv(env)
-	log.Println(value)
 	fmt.Fprint(w, value)
 }
 
