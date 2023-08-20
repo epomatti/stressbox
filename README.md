@@ -1,9 +1,11 @@
 # stressbox
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/epomatti/stressbox/go.yml)
-[![codecov](https://codecov.io/gh/epomatti/stressbox/graph/badge.svg?token=BR9Q424076)](https://codecov.io/gh/epomatti/stressbox) [![Go Report Card](https://goreportcard.com/badge/github.com/epomatti/stressbox)](https://goreportcard.com/report/github.com/epomatti/stressbox)
+[![codecov](https://codecov.io/gh/epomatti/stressbox/graph/badge.svg?token=BR9Q424076)](https://codecov.io/gh/epomatti/stressbox) [![Go Report Card](https://goreportcard.com/badge/github.com/epomatti/stressbox)](https://goreportcard.com/report/github.com/epomatti/stressbox) [![codebeat badge](https://codebeat.co/badges/634c7208-edd0-4f05-8b87-a9627d9986db)](https://codebeat.co/projects/github-com-epomatti-stressbox-main)
 
-Simulate stress/load behavior such as high CPU and memory by running this image on your infrastructure with your favorite load testing tool.
+Simulate stress/load behavior such as high CPU and memory by running this image on your infrastructure with your favorite load testing tool, along with some extra utility functions.
+
+## Endpoints
 
 Available endpoints:
 
@@ -16,8 +18,8 @@ Available endpoints:
 | /json?size={n} | Returns a JSON batch | `curl 127.1:8080/json?size=10000` |
 | /exit | Exits the application | `curl 127.1:8080/exit` |
 | /log?={m} | Writes to standard out | `curl 127.1:8080/log?m=Hello` |
+| / | Returns a static OK | `curl 127.1:8080/` |
 
-Additionally, hitting `/` will return a static "OK".
 
 ## Running the image
 
