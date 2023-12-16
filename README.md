@@ -36,6 +36,12 @@ Pull the image:
 docker pull ghcr.io/epomatti/stressbox
 ```
 
+An `ARM64` release is now available on Docker Hub:
+
+```sh
+docker pull epomatti/stressbox:arm64
+```
+
 Start the container:
 
 > 💡 Add `-e port=<PORT>` to start the listener in another port

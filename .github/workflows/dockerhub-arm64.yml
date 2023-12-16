@@ -1,0 +1,31 @@
+name: Dockerhub ARM64
+
+on:
+  workflow_dispatch:
+
+env:
+  REPOSITORY: stressbox:arm64
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./app
+    steps:
+    - uses: docker/setup-qemu-action@v3
+      with:
+          platforms: 'arm64,arm'
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile.arm64v8 --tag $REPOSITORY
+
+    - uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - run: |
+        docker tag $REPOSITORY epomatti/$REPOSITORY
+        docker push epomatti/$REPOSITORY
