@@ -22,7 +22,7 @@ jobs:
         go-version: '1.22'
 
     - name: Build
-      run: GOARCH=arm64 go build -o stressbox-arm64 -v ./...
+      run: GOARCH=arm64 go build -o stressbox-arm64 .
 
     - name: Test
       run: go test -v ./...
