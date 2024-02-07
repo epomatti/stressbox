@@ -26,3 +26,8 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: stressbox-arm64
+        path: stressbox-arm64
